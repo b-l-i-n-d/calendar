@@ -18,6 +18,7 @@ const CalendarContext = createContext<ICalendarContext>({
     setCurrentYear: () => {},
 });
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useCalendarContext = () => {
     return useContext(CalendarContext);
 };

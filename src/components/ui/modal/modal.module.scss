@@ -1,0 +1,46 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .body {
+        width: 100%;
+        max-width: 500px;
+        background-color: #fff;
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        position: relative;
+    }
+
+    .closeBtn {
+        position: absolute;
+        right: 0.75rem;
+        top: 0.75rem;
+        background: none;
+        border: none;
+        outline: none;
+        box-shadow: none;
+        cursor: pointer;
+        float: right;
+        padding: 0rem;
+        transition: all 0.3 ease;
+
+        :hover {
+            background-color: var(--color-secondary-hfa);
+            border-radius: var(--border-radius);
+        }
+    }
+
+    .title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+}

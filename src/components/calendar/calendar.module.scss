@@ -15,7 +15,7 @@
         color: #213547;
         text-decoration: none;
         background-color: #fff;
-        border: 1px solid #e6e6e6;
+        border: 0.5px solid #e6e6e6;
         cursor: pointer;
         transition: background-color 0.25s;
 
@@ -41,6 +41,10 @@
                     text-align: center;
                     vertical-align: middle;
                     color: #fff;
+                }
+
+                &.notCurrentMonth {
+                    color: #ccc;
                 }
             }
         }

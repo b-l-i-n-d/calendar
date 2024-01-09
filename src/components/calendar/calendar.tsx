@@ -26,7 +26,12 @@ export const Calender = () => {
                         <div
                             className={`${styles.day} ${
                                 isToday(day) && styles.today
-                            }`}
+                            } 
+                            ${
+                                day.getMonth() !== currentMonth &&
+                                styles.notCurrentMonth
+                            }
+                            `}
                         >
                             {isEqual(day, startOfMonth(day))
                                 ? format(day, "MMM d")

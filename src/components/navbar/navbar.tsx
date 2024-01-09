@@ -45,7 +45,9 @@ export const Navbar = () => {
     return (
         <nav className={styles.navbar}>
             {/* Logo */}
-            <div className={styles.logo}>Calendar</div>
+            <div className={styles.logo}>
+                <Icons name="calendar" size={24} /> Calendar
+            </div>
             <div className={styles.navlinks}>
                 {/* Left side */}
                 <div className={styles.navLeft}>
