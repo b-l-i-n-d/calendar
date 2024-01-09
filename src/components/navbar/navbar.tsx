@@ -51,10 +51,10 @@ export const Navbar = () => {
                 <div className={styles.navLeft}>
                     <div className={styles.monthNavBtns}>
                         <Button isIcon onClick={handlePrevMonth}>
-                            <Icons name="arrow-left" />
+                            <Icons size={20} name="arrow-left" />
                         </Button>
                         <Button isIcon onClick={handleNextMonth}>
-                            <Icons name="arrow-right" />
+                            <Icons size={20} name="arrow-right" />
                         </Button>
                     </div>
                     <span>

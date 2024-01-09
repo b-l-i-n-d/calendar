@@ -1,8 +1,8 @@
 import {
     Day,
-    addDays,
     eachDayOfInterval,
     endOfMonth,
+    endOfWeek,
     startOfMonth,
     startOfWeek,
 } from "date-fns";
@@ -18,13 +18,13 @@ export const generateCalendarDates = (
     const firstWeekday = startOfWeek(startDate, {
         weekStartsOn: firstDayOfWeek as Day,
     });
-    const lastWeekday = startOfWeek(endDate, {
+    const lastWeekday = endOfWeek(endDate, {
         weekStartsOn: firstDayOfWeek as Day,
     });
 
     const calendarDates: Date[] = eachDayOfInterval({
         start: firstWeekday,
-        end: addDays(lastWeekday, 6),
+        end: lastWeekday,
     });
 
     return calendarDates;
