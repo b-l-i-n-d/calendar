@@ -11,7 +11,7 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
             <main className="main-section">
                 <div className="left-sidebar">Left Sidebar</div>
                 <div className="main-content">{children}</div>
-                <div className="right-sidebar">Right</div>
+                <div className="right-sidebar">R</div>
             </main>
         </div>
     );

@@ -22,16 +22,10 @@ export const generateCalendarDates = (
         weekStartsOn: firstDayOfWeek as Day,
     });
 
-    const calendarDates: Date[] = [
-        ...eachDayOfInterval({
-            start: firstWeekday,
-            end: lastWeekday,
-        }),
-        ...eachDayOfInterval({
-            start: addDays(lastWeekday, 1),
-            end: addDays(lastWeekday, 6),
-        }),
-    ];
+    const calendarDates: Date[] = eachDayOfInterval({
+        start: firstWeekday,
+        end: addDays(lastWeekday, 6),
+    });
 
     return calendarDates;
 };
