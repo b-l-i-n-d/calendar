@@ -24,9 +24,14 @@ export const Select = ({
     const id = useId();
     return (
         <div className={styles.wrapper}>
-            <label htmlFor={id} className={styles.label}>
-                {label}
-            </label>
+            {
+                // If title is provided, render a label
+                label && (
+                    <label className={styles.label} htmlFor={id}>
+                        {title}
+                    </label>
+                )
+            }
             <select
                 title={title}
                 id={id}

@@ -6,7 +6,6 @@
     padding: 0.5rem 1rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     background-color: #ffffff;
     border-bottom: 1px solid #e6e6e6;
 
@@ -14,22 +13,41 @@
         font-size: 1.5rem;
         font-weight: 600;
         color: #213547;
+        width: 17rem;
         text-decoration: none;
         cursor: pointer;
     }
 
     .navlinks {
         display: flex;
+        width: 100%;
         align-items: center;
         justify-content: space-between;
         list-style: none;
+        margin-left: auto;
 
-        .nav-link {
-            margin-left: 1rem;
-            font-size: 1rem;
-            font-weight: 500;
-            color: #213547;
-            text-decoration: none;
+        .navLeft {
+            display: flex;
+            align-items: center;
+
+            .monthNavBtns {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            span {
+                margin-left: 1rem;
+                font-size: 1.25rem;
+                font-weight: 500;
+                color: #213547;
+            }
+        }
+
+        .navRight {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
     }
 }

@@ -1,5 +1,5 @@
 .wrapper {
-    margin-bottom: 0px;
+    margin: 0px;
 
     .label {
         display: block;
@@ -15,7 +15,7 @@
 
     .select {
         display: block;
-        width: 200px;
+        width: 100px;
         height: 30px;
         border: 1px solid #ccc;
         border-radius: var(--border-radius);

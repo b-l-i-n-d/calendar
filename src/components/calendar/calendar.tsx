@@ -5,11 +5,7 @@ import { useCalendarContext } from "../../context/calendar-context";
 import styles from "./calendar.module.scss";
 
 export const Calender = () => {
-    const { firstDayOfWeek } = useCalendarContext();
-
-    const today = new Date();
-    const currentMonth = today.getMonth();
-    const currentYear = today.getFullYear();
+    const { firstDayOfWeek, currentMonth, currentYear } = useCalendarContext();
 
     const days = generateCalendarDates(
         currentYear,
