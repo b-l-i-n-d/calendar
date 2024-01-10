@@ -35,18 +35,18 @@ export const Modal = ({
     // }, [modalRef]);
 
     // useEffect(() => {
-    //     window.addEventListener("keydown", (e: KeyboardEvent) => {
-    //         if (e.key === "Escape") {
-    //             onClose();
-    //         }
-    //     });
-    //     document.addEventListener("click", handleClick);
-    //     return () => {
-    //         window.removeEventListener("keydown", (e) => {
-    //             if (e.key === "Escape") {
-    //                 onClose();
-    //             }
-    //         });
+    // window.addEventListener("keydown", (e: KeyboardEvent) => {
+    //     if (e.key === "Escape") {
+    //         onClose();
+    //     }
+    // });
+    // document.addEventListener("click", handleClick);
+    // return () => {
+    // window.removeEventListener("keydown", (e) => {
+    //     if (e.key === "Escape") {
+    //         onClose();
+    //     }
+    // });
     //         document.removeEventListener("click", handleClick);
     //     };
     // });

@@ -4,6 +4,7 @@ import styles from "./input.module.scss";
 interface ITextInputProps {
     value: string;
     onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    name?: string;
     label?: string;
     placeholder?: string;
     type?: string;
@@ -16,6 +17,7 @@ interface ITextInputProps {
 
 export const TextInput = ({
     value,
+    name,
     onChange,
     label,
     placeholder,
@@ -35,6 +37,7 @@ export const TextInput = ({
             </label>
             <input
                 id={id}
+                name={name}
                 type={type}
                 value={value}
                 onChange={onChange}
