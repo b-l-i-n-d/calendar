@@ -82,12 +82,7 @@ const iconsObject = {
             <>
                 <circle cx="12" cy="12" r="10" />
                 <path d="m15 9-6 6" />
-                <path
-                    d="m9 9 6 6"
-                    style={{
-                        transform: "rotate(90deg)",
-                    }}
-                />
+                <path d="m9 9 6 6" />
             </>
         ),
     },

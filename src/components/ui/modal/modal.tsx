@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { createPortal } from "react-dom";
 import { Icons } from "../../icons";
-import styles from "./modal.module.css";
+import styles from "./modal.module.scss";
 
 interface IModalProps {
     children: React.ReactNode;
@@ -19,37 +19,37 @@ export const Modal = ({
     className,
     title,
 }: IModalProps) => {
-    const modalRef = useRef<HTMLDivElement>(null);
+    // const modalRef = useRef<HTMLDivElement>(null);
 
-    const handleClick = (e: Event) => {
-        if (!(e.target as HTMLElement).closest(`.${styles.body}`)) {
-            onClose();
-        }
-    };
+    // const handleClick = (e: Event) => {
+    //     if (!(e.target as HTMLElement).closest(`.${styles.body}`)) {
+    //         onClose();
+    //     }
+    // };
 
-    useEffect(() => {
-        const modal = modalRef.current;
-        if (modal) {
-            modal.focus();
-        }
-    }, [modalRef]);
+    // useEffect(() => {
+    //     const modal = modalRef.current;
+    //     if (modal) {
+    //         modal.focus();
+    //     }
+    // }, [modalRef]);
 
-    useEffect(() => {
-        window.addEventListener("keydown", (e: KeyboardEvent) => {
-            if (e.key === "Escape") {
-                onClose();
-            }
-        });
-        document.addEventListener("click", handleClick);
-        return () => {
-            window.removeEventListener("keydown", (e) => {
-                if (e.key === "Escape") {
-                    onClose();
-                }
-            });
-            document.removeEventListener("click", handleClick);
-        };
-    });
+    // useEffect(() => {
+    // window.addEventListener("keydown", (e: KeyboardEvent) => {
+    //     if (e.key === "Escape") {
+    //         onClose();
+    //     }
+    // });
+    // document.addEventListener("click", handleClick);
+    // return () => {
+    // window.removeEventListener("keydown", (e) => {
+    //     if (e.key === "Escape") {
+    //         onClose();
+    //     }
+    // });
+    //         document.removeEventListener("click", handleClick);
+    //     };
+    // });
 
     if (!isOpen) {
         return null;
@@ -63,10 +63,7 @@ export const Modal = ({
                     <Icons name="xCross" size={24} />
                 </button>
                 {/* Main content */}
-                <div
-                    ref={modalRef}
-                    className={`${styles.content} ${className}`}
-                >
+                <div className={`${styles.content} ${className}`}>
                     <h1 className={styles.title}>{title}</h1>
                     {children}
                 </div>
