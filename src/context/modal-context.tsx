@@ -3,6 +3,7 @@ import { createContext, useContext, useState } from "react";
 import { AddEventModal } from "../components/modals/add-event-modal";
 import { TModalType } from "../types/types";
 import { ViewEventModal } from "../components/modals/view-event-modal";
+import { AllEventsModal } from "../components/modals/all-events-modal";
 
 interface IModalContext {
     type: TModalType | null;
@@ -57,6 +58,7 @@ export const ModalContextProvider = ({
             {children}
             <AddEventModal />
             <ViewEventModal />
+            <AllEventsModal />
         </ModalContext.Provider>
     );
 };

@@ -16,7 +16,7 @@ export const LeftSideBar = () => {
                 onClick={() => onOpen("createEvent")}
                 block
             >
-                <Icons name="calendar" /> Create Event
+                <Icons name="plus" /> Create Event
             </Button>
             <MiniCalendar />
         </div>

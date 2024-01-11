@@ -7,7 +7,7 @@ interface IButtonProps {
     className?: string;
     block?: boolean;
     type?: "button" | "submit" | "reset";
-    color?: "primary" | "secondary" | "danger";
+    color?: "primary" | "secondary" | "danger" | "ghost";
     isIcon?: boolean;
     form?: string;
 }
@@ -33,6 +33,7 @@ export const Button = ({
                     color === "primary" && styles.primary
                 } ${color === "secondary" && styles.secondary}
                 ${color === "danger" && styles.danger}
+                ${color === "ghost" && styles.ghost}
                 ${className} ${block && styles.block} ${
                     disabled && styles.disabled
                 }`}

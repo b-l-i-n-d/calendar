@@ -88,6 +88,19 @@
         }
     }
 
+    &.ghost {
+        background-color: transparent;
+        border-color: transparent;
+        color: #333;
+
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: #eee;
+            border-color: #999;
+        }
+    }
+
     &:hover,
     &:focus {
         background-color: #eee;

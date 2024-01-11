@@ -66,6 +66,15 @@ const iconsObject = {
             </>
         ),
     },
+    plus: {
+        viewBox: "0 0 24 24",
+        path: (
+            <>
+                <path d="M5 12h14" />
+                <path d="M12 5v14" />
+            </>
+        ),
+    },
     trash: {
         viewBox: "0 0 24 24",
         path: (

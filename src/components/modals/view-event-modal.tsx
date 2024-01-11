@@ -1,14 +1,16 @@
+import { format } from "date-fns";
+import { useEffect, useState } from "react";
+
+import { Button } from "../ui/button/button";
 import { Modal } from "../ui/modal/modal";
 
 import { useCalendarContext } from "../../context/calendar-context";
 import { useModalContext } from "../../context/modal-context";
 
-import { format } from "date-fns";
-import { useEffect, useState } from "react";
 import { ICalendarEvent } from "../../types/types";
 import { Icons } from "../icons";
-import { Button } from "../ui/button/button";
-import styles from "./view-event-modal.module.scss";
+
+import styles from "./modals.module.scss";
 
 export const ViewEventModal = () => {
     const { isOpen, onClose, type, data } = useModalContext();
@@ -42,9 +44,6 @@ export const ViewEventModal = () => {
                             <p className={styles.eventTitle}>
                                 {currentEvent.title}
                             </p>
-                            <p className={styles.eventDescription}>
-                                {currentEvent.description}
-                            </p>
                             <div className={styles.eventDates}>
                                 <p className={styles.eventDate}>
                                     {format(
@@ -62,6 +61,9 @@ export const ViewEventModal = () => {
                                     )}
                                 </p>
                             </div>
+                            <p className={styles.eventDescription}>
+                                {currentEvent.description}
+                            </p>
                         </>
                     ) : (
                         <p>No event selected</p>
