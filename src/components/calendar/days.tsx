@@ -27,10 +27,6 @@ export const Days = ({ date, index }: IDaysProps) => {
         : format(date, "d");
     const todaysEvents = daysWithData[format(date, "yyyy-MM-dd")]?.events || [];
 
-    const handleModalOpen = () => {
-        onOpen("addEvent", format(date, "yyyy-MM-dd"));
-    };
-
     const eventsWithIndex = todaysEvents.map((event) => {
         const eventStart = format(events[event].startDate, "yyyy-MM-dd");
         const index = daysWithData[eventStart].events.indexOf(event);
@@ -53,26 +49,29 @@ export const Days = ({ date, index }: IDaysProps) => {
         .slice(0, 2);
 
     return (
-        <div
-            className={styles.wrapper}
-            tabIndex={0}
-            role="button"
-            aria-pressed={false}
-            onClick={handleModalOpen}
-        >
-            <div className={styles.date}>
-                {index < 7 && (
-                    <div className={styles.dayName}>{format(date, "EEE")}</div>
-                )}
-                <div
-                    className={`${styles.day} ${
-                        isToday(date) && styles.today
-                    } ${!isCurrentMonth && styles.notCurrentMonth}`}
-                >
-                    {formattedDate}
-                </div>
+        <div className={styles.container}>
+            <div
+                className={styles.wrapper}
+                tabIndex={0}
+                role="button"
+                aria-pressed={false}
+                onClick={() => onOpen("addEvent", format(date, "yyyy-MM-dd"))}
+            >
+                <div className={styles.date}>
+                    {index < 7 && (
+                        <div className={styles.dayName}>
+                            {format(date, "EEE")}
+                        </div>
+                    )}
+                    <div
+                        className={`${styles.day} ${
+                            isToday(date) && styles.today
+                        } ${!isCurrentMonth && styles.notCurrentMonth}`}
+                    >
+                        {formattedDate}
+                    </div>
 
-                {/* {maxIndex >= 1 ? (
+                    {/* {maxIndex >= 1 ? (
                     <>
                         <div
                             className={`${styles.event} ${
@@ -92,11 +91,11 @@ export const Days = ({ date, index }: IDaysProps) => {
                                 ) && styles.transparent
                             }`}
                         > */}
-                {/* {eventsWithIndex.find((event) => event.index === 1)
+                    {/* {eventsWithIndex.find((event) => event.index === 1)
                                 ?.event &&
                                 events[eventsWithIndex[1].event].title} */}
 
-                {/* {
+                    {/* {
                                 events[
                                     eventsWithIndex.find(
                                         (event) => event.index === 1
@@ -116,17 +115,44 @@ export const Days = ({ date, index }: IDaysProps) => {
                     ))
                 )} */}
 
-                {sortedEventsWithIndex.map((eventWithIndex) => (
-                    <div key={eventWithIndex.event} className={styles.event}>
-                        {events[eventWithIndex.event].title}
-                    </div>
-                ))}
-                {todaysEvents.length > 2 && (
-                    <div className={styles.more}>
-                        +{todaysEvents.length - 2}
-                    </div>
-                )}
+                    {/* {sortedEventsWithIndex.map((eventWithIndex) => (
+                        <div
+                            key={eventWithIndex.event}
+                            className={styles.event}
+                        >
+                            {events[eventWithIndex.event].title}
+                        </div>
+                    ))}
+                    {todaysEvents.length > 2 && (
+                        <div className={styles.more}>
+                            +{todaysEvents.length - 2}
+                        </div>
+                    )} */}
+                </div>
             </div>
+            {todaysEvents.length > 0 && (
+                <div className={styles.eventWrapper}>
+                    {sortedEventsWithIndex.map((eventWithIndex) => (
+                        <div
+                            tabIndex={0}
+                            role="button"
+                            aria-pressed={false}
+                            key={eventWithIndex.event}
+                            className={styles.event}
+                            onClick={() =>
+                                onOpen("viewEvent", eventWithIndex.event)
+                            }
+                        >
+                            {events[eventWithIndex.event].title}
+                        </div>
+                    ))}
+                    {todaysEvents.length > 2 && (
+                        <div className={styles.more}>
+                            +{todaysEvents.length - 2}
+                        </div>
+                    )}
+                </div>
+            )}
         </div>
     );
 };

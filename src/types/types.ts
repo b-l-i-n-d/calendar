@@ -1,11 +1,13 @@
-export type TModalType = "addEvent";
+export type TModalType = "addEvent" | "viewEvent";
 
+export interface ICalendarEvent {
+    title: string;
+    description?: string;
+    startDate: Date;
+    endDate: Date;
+}
 export interface ICalendarEvents {
-    [key: string]: {
-        title: string;
-        startDate: Date;
-        endDate: Date;
-    };
+    [key: string]: ICalendarEvent;
 }
 
 export interface IDaysWithData {

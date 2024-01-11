@@ -14,6 +14,7 @@ interface IFormData {
     startDate: string;
     endDate: string;
     title: string;
+    description?: string;
 }
 
 interface IFormError {
@@ -28,6 +29,7 @@ export const AddEventModal = () => {
         startDate: "",
         endDate: "",
         title: "",
+        description: "",
     });
     const [error, setError] = useState<IFormError>({});
     const formId = useId();
@@ -44,6 +46,7 @@ export const AddEventModal = () => {
             startDate: "",
             endDate: "",
             title: "",
+            description: "",
         });
         setError({
             title: "",
@@ -80,7 +83,7 @@ export const AddEventModal = () => {
         if (handleCheckForErrors()) {
             return;
         }
-        const { startDate, endDate, title } = formData;
+        const { startDate, endDate, title, description } = formData;
         const eventDates = eachDayOfInterval({
             start: new Date(startDate),
             end: new Date(endDate),
@@ -92,6 +95,7 @@ export const AddEventModal = () => {
                 ...prev,
                 [id]: {
                     title,
+                    description,
                     startDate: new Date(startDate),
                     endDate: new Date(endDate),
                 },
@@ -178,6 +182,15 @@ export const AddEventModal = () => {
                         onChange={handleChange}
                         error={error?.title}
                         required
+                        block
+                    />
+
+                    <TextInput
+                        name="description"
+                        label="Description"
+                        placeholder="Enter event description"
+                        value={formData.description || ""}
+                        onChange={handleChange}
                         block
                     />
 

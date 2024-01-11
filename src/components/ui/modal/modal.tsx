@@ -56,7 +56,7 @@ export const Modal = ({
     }
 
     return createPortal(
-        <section className={styles.modal} aria-modal="true" role="dialog">
+        <div className={styles.modal}>
             <div className={styles.body}>
                 {/* Close btn */}
                 <button className={styles.closeBtn} onClick={onClose}>
@@ -68,7 +68,7 @@ export const Modal = ({
                     {children}
                 </div>
             </div>
-        </section>,
+        </div>,
         document.getElementById("modal-root") as HTMLElement
     );
 };
