@@ -1,4 +1,4 @@
-export type TModalType = "addEvent" | "viewEvent";
+export type TModalType = "addEvent" | "viewEvent" | "createEvent";
 
 export interface ICalendarEvent {
     title: string;

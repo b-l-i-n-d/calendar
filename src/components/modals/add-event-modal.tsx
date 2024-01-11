@@ -19,6 +19,7 @@ interface IFormData {
 
 interface IFormError {
     title?: string;
+    startDate?: string;
     endDate?: string;
 }
 
@@ -26,15 +27,16 @@ export const AddEventModal = () => {
     const { isOpen, onClose, type, data } = useModalContext();
     const { setEvents, setDaysWithData } = useCalendarContext();
     const [formData, setFormData] = useState<IFormData>({
-        startDate: "",
-        endDate: "",
+        startDate: format(Date.now(), "yyyy-MM-dd"),
+        endDate: format(Date.now(), "yyyy-MM-dd"),
         title: "",
         description: "",
     });
     const [error, setError] = useState<IFormError>({});
     const formId = useId();
 
-    const isModalOpen = isOpen && type === "addEvent";
+    const isModalOpen =
+        isOpen && (type === "addEvent" || type === "createEvent");
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -43,13 +45,14 @@ export const AddEventModal = () => {
 
     const handleReset = () => {
         setFormData({
-            startDate: "",
-            endDate: "",
+            startDate: format(Date.now(), "yyyy-MM-dd"),
+            endDate: format(Date.now(), "yyyy-MM-dd"),
             title: "",
             description: "",
         });
         setError({
             title: "",
+            startDate: "",
             endDate: "",
         });
     };
@@ -59,6 +62,19 @@ export const AddEventModal = () => {
         setError({});
         if (formData.title.trim().length < 1) {
             setError((prev) => ({ ...prev, title: "Title is required" }));
+            hasError = true;
+        }
+
+        if (!formData.startDate) {
+            setError((prev) => ({
+                ...prev,
+                startDate: "Start date is required",
+            }));
+            hasError = true;
+        }
+
+        if (!formData.endDate) {
+            setError((prev) => ({ ...prev, endDate: "End date is required" }));
             hasError = true;
         }
 
@@ -141,7 +157,7 @@ export const AddEventModal = () => {
         <Modal
             isOpen={isModalOpen}
             onClose={handleModalClose}
-            title="Add event"
+            title={type === "addEvent" ? "Add event" : "Create event"}
         >
             <div className={styles.addEventModal}>
                 <form
@@ -155,9 +171,10 @@ export const AddEventModal = () => {
                             type="date"
                             label="Start date"
                             value={formData.startDate}
-                            disabled
+                            disabled={type === "addEvent"}
                             onChange={handleChange}
                             className={styles.dateInput}
+                            error={error?.startDate}
                             required
                             block
                         />
