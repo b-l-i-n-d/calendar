@@ -72,24 +72,38 @@
             position: absolute;
             z-index: 100;
             text-align: center;
+            // overflow: hidden;
+
             .event {
-                width: 100%;
+                justify-content: center;
+                display: flex;
                 height: 15px;
                 text-align: center;
                 text-decoration: none;
-                background-color: var(--color-primary);
                 margin-top: 0.5rem;
                 font-size: 0.6rem;
                 color: white;
                 text-overflow: ellipsis;
                 overflow: hidden;
 
+                &.startsToday {
+                    margin-left: 0.25rem;
+                    border-top-left-radius: var(--border-radius);
+                    border-bottom-left-radius: var(--border-radius);
+                }
+
+                &.endsToday {
+                    margin-right: 0.25rem;
+                    border-top-right-radius: var(--border-radius);
+                    border-bottom-right-radius: var(--border-radius);
+                }
+
                 &.transparent {
                     background-color: transparent;
                 }
 
                 &:hover {
-                    background-color: var(--color-primary-hfa);
+                    filter: brightness(0.9);
                     cursor: pointer;
                 }
             }

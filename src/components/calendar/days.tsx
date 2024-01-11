@@ -9,6 +9,7 @@ import {
 import { useCalendarContext } from "../../context/calendar-context";
 import { useModalContext } from "../../context/modal-context";
 
+import { Button } from "../ui/button/button";
 import styles from "./calendar.module.scss";
 
 interface IDaysProps {
@@ -41,8 +42,6 @@ export const Days = ({ date, index }: IDaysProps) => {
 
         return { event, index, duration };
     });
-
-    // console.log(eventsWithIndex);
 
     const sortedEventsWithIndex = eventsWithIndex
         .sort((a, b) => b.duration - a.duration)
@@ -134,11 +133,38 @@ export const Days = ({ date, index }: IDaysProps) => {
                 <div className={styles.eventWrapper}>
                     {sortedEventsWithIndex.map((eventWithIndex) => (
                         <div
+                            style={{
+                                backgroundColor:
+                                    events[eventWithIndex.event].color,
+                            }}
                             tabIndex={0}
                             role="button"
                             aria-pressed={false}
                             key={eventWithIndex.event}
-                            className={styles.event}
+                            className={`
+                                ${styles.event}
+                                ${
+                                    isEqual(
+                                        format(
+                                            events[eventWithIndex.event]
+                                                .startDate,
+                                            "yyyy-MM-dd"
+                                        ),
+                                        format(date, "yyyy-MM-dd")
+                                    ) && styles.startsToday
+                                }
+                                ${
+                                    isEqual(
+                                        format(
+                                            events[eventWithIndex.event]
+                                                .endDate,
+                                            "yyyy-MM-dd"
+                                        ),
+                                        format(date, "yyyy-MM-dd")
+                                    ) && styles.endsToday
+                                }
+                                
+                            `}
                             onClick={() =>
                                 onOpen("viewEvent", eventWithIndex.event)
                             }
@@ -147,9 +173,15 @@ export const Days = ({ date, index }: IDaysProps) => {
                         </div>
                     ))}
                     {todaysEvents.length > 2 && (
-                        <div className={styles.more}>
+                        <Button
+                            isIcon
+                            onClick={() =>
+                                onOpen("allEvents", format(date, "yyyy-MM-dd"))
+                            }
+                            color="ghost"
+                        >
                             +{todaysEvents.length - 2}
-                        </div>
+                        </Button>
                     )}
                 </div>
             )}

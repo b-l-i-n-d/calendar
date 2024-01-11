@@ -57,7 +57,7 @@ export const MiniCalendar = () => {
             <div className={styles.miniCalendarBody}>
                 {Array.from({ length: 7 }).map((_, index) => (
                     <div key={index} className={styles.miniCalendarDay}>
-                        {format(dates[index], "EEE")}
+                        {format(dates[index], "EEEEE")}
                     </div>
                 ))}
                 {dates.map((date, index) => (

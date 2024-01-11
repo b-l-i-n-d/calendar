@@ -8,7 +8,8 @@ import { Modal } from "../ui/modal/modal";
 import { useCalendarContext } from "../../context/calendar-context";
 import { useModalContext } from "../../context/modal-context";
 
-import styles from "./add-event-modal.module.scss";
+import { generateRandomColor } from "../../utils/generate-random-color";
+import styles from "./modals.module.scss";
 
 interface IFormData {
     startDate: string;
@@ -64,7 +65,6 @@ export const AddEventModal = () => {
             setError((prev) => ({ ...prev, title: "Title is required" }));
             hasError = true;
         }
-
         if (!formData.startDate) {
             setError((prev) => ({
                 ...prev,
@@ -114,6 +114,7 @@ export const AddEventModal = () => {
                     description,
                     startDate: new Date(startDate),
                     endDate: new Date(endDate),
+                    color: generateRandomColor(),
                 },
             };
             return newEvents;
