@@ -24,6 +24,9 @@ npm run dev
 ## Features (Will be updated as the project progresses)
 
 -   [x] Select first day of the week
+-   [x] Navigate between months
+-   [x] Add events to the calendar
+-   [x] View events
 
 ## Technologies
 
