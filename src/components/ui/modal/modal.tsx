@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { Icons } from "../../icons";
 import styles from "./modal.module.scss";
@@ -19,44 +19,68 @@ export const Modal = ({
     className,
     title,
 }: IModalProps) => {
-    // const modalRef = useRef<HTMLDivElement>(null);
-
-    // const handleClick = (e: Event) => {
-    //     if (!(e.target as HTMLElement).closest(`.${styles.body}`)) {
-    //         onClose();
-    //     }
-    // };
+    const modalRef = useRef<HTMLDivElement>(null);
 
     // useEffect(() => {
-    //     const modal = modalRef.current;
-    //     if (modal) {
-    //         modal.focus();
-    //     }
-    // }, [modalRef]);
+    //     console.log("modalRef", modalRef);
+    //     if (isOpen) {
+    //         const modalElement = modalRef.current?.focus();
+    //         console.log("modalElement", modalElement);
 
-    // useEffect(() => {
-    // window.addEventListener("keydown", (e: KeyboardEvent) => {
-    //     if (e.key === "Escape") {
-    //         onClose();
+    //         //add any focusable HTML element you want to include to this string
+    //         const focusableElements = modalElement?.querySelectorAll(
+    //             'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    //         );
+    //         const firstElement = focusableElements && focusableElements[0];
+    //         const lastElement =
+    //             focusableElements &&
+    //             focusableElements[focusableElements.length - 1];
+
+    //         const handleTabKeyPress = (event: KeyboardEvent) => {
+    //             console.log("event", event);
+    //             if (event.key === "Tab") {
+    //                 if (
+    //                     event.shiftKey &&
+    //                     document.activeElement === firstElement
+    //                 ) {
+    //                     event.preventDefault();
+    //                     lastElement?.focus();
+    //                 } else if (
+    //                     !event.shiftKey &&
+    //                     document.activeElement === lastElement
+    //                 ) {
+    //                     event.preventDefault();
+    //                     firstElement?.focus();
+    //                 }
+    //             }
+    //         };
+    //         modalElement?.addEventListener("keypress", handleTabKeyPress);
+
+    //         return () => {
+    //             modalElement?.removeEventListener(
+    //                 "keypress",
+    //                 handleTabKeyPress
+    //             );
+    //         };
     //     }
-    // });
-    // document.addEventListener("click", handleClick);
-    // return () => {
-    // window.removeEventListener("keydown", (e) => {
-    //     if (e.key === "Escape") {
-    //         onClose();
-    //     }
-    // });
-    //         document.removeEventListener("click", handleClick);
-    //     };
-    // });
+    // }, [isOpen]);
+
+    useEffect(() => {
+        const close = (e: KeyboardEvent) => {
+            if (e.key === "Escape") {
+                onClose();
+            }
+        };
+        window.addEventListener("keydown", close);
+        return () => window.removeEventListener("keydown", close);
+    }, [onClose]);
 
     if (!isOpen) {
         return null;
     }
 
     return createPortal(
-        <div className={styles.modal}>
+        <div ref={modalRef} className={styles.modal}>
             <div className={styles.body}>
                 {/* Close btn */}
                 <button className={styles.closeBtn} onClick={onClose}>
