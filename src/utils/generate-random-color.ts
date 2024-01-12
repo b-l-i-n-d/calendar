@@ -1,8 +1,7 @@
 export const generateRandomColor = () => {
-    const allowed = "0369cf".split("");
-    let s = "#";
-    while (s.length < 4) {
-        s += allowed.splice(Math.floor(Math.random() * allowed.length), 1);
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+        color += Math.floor(Math.random() * 16).toString(16);
     }
-    return s;
+    return color;
 };

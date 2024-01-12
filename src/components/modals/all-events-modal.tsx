@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 import { Button } from "../ui/button/button";
 import { Modal } from "../ui/modal/modal";
@@ -45,8 +45,8 @@ export const AllEventsModal = () => {
             <div className={styles.viewEventModal}>
                 <div className={styles.eventDetails}>
                     {todaysEvents && todaysEvents.length > 0 ? (
-                        todaysEvents.map((event) => (
-                            <>
+                        todaysEvents.map((event, index) => (
+                            <Fragment key={index}>
                                 <p className={styles.eventTitle}>
                                     {event.title}
                                 </p>
@@ -64,7 +64,7 @@ export const AllEventsModal = () => {
                                 <p className={styles.eventDescription}>
                                     {event.description}
                                 </p>
-                            </>
+                            </Fragment>
                         ))
                     ) : (
                         <p>No event selected</p>
